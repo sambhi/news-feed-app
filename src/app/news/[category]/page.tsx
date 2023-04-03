@@ -1,5 +1,5 @@
 import fetchNews from '../../../../lib/fetchNews';
-import NewsList from '@/app/NewsList';
+import NewsList from '../../NewsList';
 import { categories } from '../../../../constants';
 
 type Props = {

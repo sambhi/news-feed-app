@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 import sortNewsByImage from './sortNewsByImage';
 const fetchNews = async (category?: Category | string, keywords?: string, isDynamic?: boolean) => {
   const query = gql`
-    query MyQuery($access_key: String!, $categories: String!, $keywords: String) {
+    query myQuery($access_key: String!, $categories: String!, $keywords: String) {
       myQuery(
         access_key: $access_key
         categories: $categories
@@ -35,7 +35,7 @@ const fetchNews = async (category?: Category | string, keywords?: string, isDyna
   const res = await fetch('https://devonport.stepzen.net/api/excited-angelfish/__graphql', {
     method: 'POST',
     cache: isDynamic ? 'no-cache' : 'default',
-    next: isDynamic ? { revalidate: 0 } : { revalidate: 20 },
+    next: isDynamic ? { revalidate: 0 } : { revalidate: 86400000000 },
     headers: {
       'Content-Type': 'application/json',
       Authorization: `ApiKey ${process.env.STEPZEN_API_KEY}`,
